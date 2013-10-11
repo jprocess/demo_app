@@ -5,12 +5,6 @@ ruby '1.9.3'
 gem 'rails', '4.0.0'
 
 
-gem 'sqlite3', :group => [:development, :test]
-group :production do
-	gem 'thin'
- 
-end
-
 
 gem 'sass-rails', '4.0.0'
 gem 'uglifier', '2.1.1'
@@ -23,8 +17,10 @@ group :doc do
   gem 'sdoc', '0.3.20', require: false
 end
 
-group :production do
-  gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
+group :production, :staging do
+  gem "pg"
 end
 
+group :development, :test do
+  gem "sqlite3-ruby", "~> 1.3.0", :require => "sqlite3"
+end
